@@ -1,0 +1,9 @@
+<html>
+<head></head>
+<body>
+    <p>Dear ${firstName},</p>
+    <p>Thank you for signing up to Akil's Reddit, please click on the below url to activate your account : <b>{message}</b></p>
+    <p>Thanks</p>
+
+</body>
+</html>
