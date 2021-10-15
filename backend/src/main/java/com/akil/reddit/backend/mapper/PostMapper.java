@@ -6,13 +6,11 @@ import com.akil.reddit.backend.model.*;
 import com.akil.reddit.backend.repository.CommentRepository;
 import com.akil.reddit.backend.repository.VoteRepository;
 import com.akil.reddit.backend.security.AuthenticationService;
-import com.github.marlonlom.utilities.timeago.TimeAgo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
-
 
 @Mapper(componentModel = "spring")
 public abstract class PostMapper {
@@ -27,13 +25,13 @@ public abstract class PostMapper {
 
     @Mapping(target = "createdDate", expression = "java(java.time.Instant.now())")
     @Mapping(target = "description", source = "postRequest.description")
-    @Mapping(target = "subreddit", source = "subreddit")
+    @Mapping(target = "subReddit", source = "subReddit")
     @Mapping(target = "voteCount", constant = "0")
     @Mapping(target = "user", source = "user")
-    public abstract Post map(PostRequest postRequest, SubReddit subreddit, User user);
+    public abstract Post map(PostRequest postRequest, SubReddit subReddit, User user);
 
     @Mapping(target = "id", source = "postId")
-    @Mapping(target = "subredditName", source = "subreddit.name")
+    @Mapping(target = "subredditName", source = "subReddit.name")
     @Mapping(target = "userName", source = "user.username")
     @Mapping(target = "commentCount", expression = "java(commentCount(post))")
     @Mapping(target = "duration", expression = "java(getDuration(post))")
@@ -46,7 +44,8 @@ public abstract class PostMapper {
     }
 
     String getDuration(Post post) {
-        return TimeAgo.using(post.getCreatedDate().toEpochMilli());
+        //return TimeAgo.using(post.getCreatedDate().toEpochMilli());
+        return post.getCreatedDate().toString();
     }
 
     boolean isPostUpVoted(Post post) {

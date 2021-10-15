@@ -9,8 +9,8 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface CommentMapper {
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "text", source = "commentsDto.text")
+    @Mapping(target = "commentId", ignore = true)
+    @Mapping(target = "description", source = "commentsDto.text")
     @Mapping(target = "createdDate", expression = "java(java.time.Instant.now())")
     @Mapping(target = "post", source = "post")
     @Mapping(target = "user", source = "user")

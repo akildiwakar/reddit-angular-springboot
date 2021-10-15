@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -28,7 +28,7 @@ public class SubReddit {
     private String description;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy ="subReddit" )
-    private Set<Post> posts;
+    private List<Post> posts;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="userId")

@@ -1,6 +1,5 @@
 package com.akil.reddit.backend.mapper;
 
-
 import com.akil.reddit.backend.dto.SubredditDto;
 import com.akil.reddit.backend.model.Post;
 import com.akil.reddit.backend.model.SubReddit;
